@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- This is sam, in a comment -->
+    <!-- The previous lines tell maven what version to use -->
+
+    <!-- these lines tell maven about your project -->
+    <groupId>com.debarshikundu.sudoku.server</groupId>
+    <artifactId>sudokuserver</artifactId>
+    <version>1.0.0</version>
+
+    <!-- these lines tell maven where to find libraries -->
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Maven Repository Switchboard</name>
+            <layout>default</layout>
+            <url>http://repo1.maven.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- this is for pulling in the NanoHttpd library
+             That will help us make a webserver for the app -->
+        <!-- I nabbed it from https://github.com/NanoHttpd/nanohttpd -->
+        <dependency>
+            <groupId>org.nanohttpd</groupId>
+            <artifactId>nanohttpd</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+    </dependencies>
+
+</project>
