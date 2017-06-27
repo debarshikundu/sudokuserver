@@ -10,11 +10,13 @@ import java.util.Map;
 import fi.iki.elonen.NanoHTTPD;
 
 public class Main extends NanoHTTPD {
+    Controller controller;
 
     public Main() throws IOException {
         super(8080);
         start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
         System.out.println("\nRunning! Point your browsers to http://localhost:8080/ \n");
+        controller = new Controller();
     }
 
     public static void main(String[] args) {
@@ -27,7 +29,22 @@ public class Main extends NanoHTTPD {
 
     @Override
     public Response serve(IHTTPSession session) {
-        String msg = "<html><body><h1>Hello server</h1></body></html>";
+        String uri = session.getUri();
+        String msg="";
+
+        if(uri.equals("/startGame"))
+        {
+            msg = "You want to start a new game.";
+            controller.startGame(null);
+        }
+
+        else if(uri.equals("/endGame"))
+        {
+            msg = "You want to quit the current game.";
+            controller.exitGame(null);
+        }
+
+
         return newFixedLengthResponse(msg);
     }
 }
