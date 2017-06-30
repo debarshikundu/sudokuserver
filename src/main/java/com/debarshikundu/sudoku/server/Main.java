@@ -54,7 +54,7 @@ public class Main extends NanoHTTPD {
         else if(arr.length==3&&arr[1].equals("endGame"))
         {
             msg = "You want to quit the current game.";
-            controller.exitGame(null);
+            controller.exitGame(0);
         }
 
 
