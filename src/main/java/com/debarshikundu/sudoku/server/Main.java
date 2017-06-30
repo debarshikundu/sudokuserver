@@ -6,6 +6,7 @@ package com.debarshikundu.sudoku.server;
 
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Map;
 import fi.iki.elonen.NanoHTTPD;
 
@@ -31,14 +32,26 @@ public class Main extends NanoHTTPD {
     public Response serve(IHTTPSession session) {
         String uri = session.getUri();
         String msg="";
+        System.out.println(uri);
         String[] arr= uri.split("/");
-        if(arr[1].equals("startGame"))
+
+        if(arr.length==3&&arr[1].equals("startGame"))
         {
             msg = "You want to start a new game.";
             controller.startGame(null);
+
+            String arrNumbers[]=arr[2].split("&");
+            int intArray[]=new int[arrNumbers.length];
+
+            for(int index=0; index<arrNumbers.length; index++)
+            {
+                intArray[index]=Integer.parseInt(arrNumbers[index]);
+            }
+
+            System.out.println(Arrays.toString(intArray));
         }
 
-        else if(arr[1].equals("endGame"))
+        else if(arr.length==3&&arr[1].equals("endGame"))
         {
             msg = "You want to quit the current game.";
             controller.exitGame(null);
