@@ -31,14 +31,14 @@ public class Main extends NanoHTTPD {
     public Response serve(IHTTPSession session) {
         String uri = session.getUri();
         String msg="";
-
-        if(uri.equals("/startGame"))
+        String[] arr= uri.split("/");
+        if(uri.startsWith("/startGame"))
         {
             msg = "You want to start a new game.";
             controller.startGame(null);
         }
 
-        else if(uri.equals("/endGame"))
+        else if(uri.startsWith("/endGame"))
         {
             msg = "You want to quit the current game.";
             controller.exitGame(null);
