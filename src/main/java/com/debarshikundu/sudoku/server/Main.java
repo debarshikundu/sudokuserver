@@ -32,13 +32,13 @@ public class Main extends NanoHTTPD {
         String uri = session.getUri();
         String msg="";
         String[] arr= uri.split("/");
-        if(uri.startsWith("/startGame"))
+        if(arr[1].equals("startGame"))
         {
             msg = "You want to start a new game.";
             controller.startGame(null);
         }
 
-        else if(uri.startsWith("/endGame"))
+        else if(arr[1].equals("endGame"))
         {
             msg = "You want to quit the current game.";
             controller.exitGame(null);
